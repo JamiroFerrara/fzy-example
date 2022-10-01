@@ -9,5 +9,5 @@ fn main() {
 
 #[tokio::main]
 async fn tokio_main() {
-    Commands::fzy_commands();
+    Command::fzy_commands();
 }
