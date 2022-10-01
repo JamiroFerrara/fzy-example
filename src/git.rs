@@ -27,16 +27,25 @@ impl Git {
     }
 
     pub fn git_commit_push(&self) {
-        let mut git = Command::new("git");
-        git.arg("add *");
-        git.current_dir(&self.path);
-        match git.output() {
-            Ok(output) => {
-                println!("{}", String::from_utf8_lossy(&output.stdout));
-            },
-            Err(e) => {
-                println!("Error: {}", e);
-            }
-        }
+        Command::new("git").
+            arg("add").
+            arg("*").
+            current_dir(&self.path).
+            output().
+            expect("Failed to add files to git");
+
+        Command::new("git").
+            arg("commit").
+            arg("-m").
+            arg("'upd'").
+            current_dir(&self.path).
+            output().
+            expect("Failed to commit");
+
+        Command::new("git").
+            arg("push").
+            current_dir(&self.path).
+            output().
+            expect("Failed to commit");
     }
 }
