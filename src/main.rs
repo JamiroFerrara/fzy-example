@@ -1,5 +1,7 @@
-mod command_example;
-use command_example::*;
+pub mod commands;
+pub mod git;
+
+use commands::*;
 
 fn main() {
     tokio_main(); //Async runtime
