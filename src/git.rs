@@ -37,7 +37,7 @@ impl Git {
         Command::new("git").
             arg("commit").
             arg("-m").
-            arg("'upd'").
+            arg("upd").
             current_dir(&self.path).
             output().
             expect("Failed to commit");
